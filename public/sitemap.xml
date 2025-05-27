@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="https://www.w3.org/1999/xhtml"
+>
+  <url>
+    <loc>https://qhingenieria.com/</loc>
+    <lastmod>2025-05-19</lastmod>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://qhingenieria.com/#sobre-nosotros</loc>
+    <lastmod>2025-05-19</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://qhingenieria.com/#servicios</loc>
+    <lastmod>2025-05-19</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://qhingenieria.com/#proyectos</loc>
+    <lastmod>2025-05-19</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://qhingenieria.com/#contacto</loc>
+    <lastmod>2025-05-19</lastmod>
+    <priority>0.80</priority>
+  </url>
+</urlset>
