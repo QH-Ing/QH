@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname, useRouter } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,22 +9,19 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLUListElement>(null);
+  const pathname = usePathname();
+  const router = useRouter();
 
-  // Detectar scroll
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Bloquear scroll cuando menú abierto
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
   }, [menuOpen]);
 
-  // Cerrar menú al hacer scroll
   useEffect(() => {
     const handleScrollCloseMenu = () => {
       if (menuOpen) setMenuOpen(false);
@@ -32,7 +30,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScrollCloseMenu);
   }, [menuOpen]);
 
-  // Cerrar menú al clickear fuera
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -45,51 +42,50 @@ export default function Header() {
     };
     if (menuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
     }
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [menuOpen]);
 
-  // Cerrar con Escape
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && menuOpen) {
-        setMenuOpen(false);
-      }
+      if (e.key === 'Escape' && menuOpen) setMenuOpen(false);
     };
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [menuOpen]);
 
   const scrollToSection = (id: string) => {
-    setMenuOpen(false);
-    setTimeout(() => {
-      const element = document.getElementById(id);
-      if (element) {
-        const headerOffset = 100;
-        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-        const offsetPosition = elementPosition - headerOffset;
+    const element = document.getElementById(id);
+    if (element) {
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      const offsetPosition = elementPosition - headerOffset;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+  };
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth',
-        });
-      }
-    }, 50);
+  const handleMenuClick = (id: string) => {
+    setMenuOpen(false);
+    if (pathname === '/') {
+      setTimeout(() => scrollToSection(id), 50);
+    } else {
+      router.push(`/#${id}`);
+    }
   };
 
   const menuItems = [
     { label: 'Sobre Nosotros', id: 'sobre-nosotros' },
     { label: 'Servicios', id: 'servicios' },
-    { label: 'Por qué elegirnos', id: 'por-que-elegirnos' },
-    { label: 'Proyectos', id: 'proyectos' },
+    { label: 'Productos', href: '/products' },
+    { label: 'Proyectos', href: '/projects' },
     { label: 'Contacto', id: 'contacto' },
   ];
 
+  const getHoverColor = (index: number) =>
+    index % 2 === 0 ? 'hover:border-b-2 hover:border-orange-500' : 'hover:border-b-2 hover:border-green-600';
+
   return (
     <>
-      {/* Overlay de blur - siempre fuera del header */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -103,47 +99,60 @@ export default function Header() {
         )}
       </AnimatePresence>
 
-      {/* Header */}
       <header
         className={`sticky top-0 z-50 transition-colors duration-300 ${
           scrolled ? 'bg-white/30 backdrop-blur-sm' : 'bg-transparent'
         }`}
       >
-        <nav className=" mx-auto flex items-center justify-between py-6 px-6">
-          <div className="text-2xl font-bold text-gray-900">QH Ingeniería <br className="block md:hidden" /> y Servicios</div>
+        <nav className="mx-auto flex items-center justify-between py-6 px-6">
+          <div
+            onClick={() => router.push('/')}
+            className="text-2xl font-bold text-gray-900 cursor-pointer"
+          >
+            QH Ingeniería <br className="block md:hidden" /> y Servicios
+          </div>
 
-          {/* Botón hamburguesa */}
           <button
             id="menu-toggle"
-            aria-controls="mobile-menu"
-            aria-expanded={menuOpen}
-            aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden text-gray-700 cursor-pointer"
           >
             {menuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
+<ul className="hidden md:flex gap-8 text-gray-700">
+  {menuItems.map(({ label, id, href }, index) => (
+    <li key={label} className="relative group pb-2">
+      {href ? (
+        <a
+          href={href}
+          className="transition-colors cursor-pointer hover:text-black"
+        >
+          {label}
+          <span
+            className={`absolute left-0 -bottom-1 h-[3px] w-0 transition-all duration-400 ${
+              index % 2 === 0 ? 'bg-orange-600 group-hover:w-full' : 'bg-green-700 group-hover:w-full'
+            }`}
+          />
+        </a>
+      ) : (
+        <button
+          onClick={() => handleMenuClick(id!)}
+          className="transition-colors cursor-pointer hover:text-black"
+        >
+          {label}
+          <span
+            className={`absolute left-0 -bottom-1 h-[3px] w-0 transition-all duration-400 ${
+              index % 2 === 0 ? 'bg-orange-600 group-hover:w-full' : 'bg-green-700 group-hover:w-full'
+            }`}
+          />
+        </button>
+      )}
+    </li>
+  ))}
+</ul>
 
-          {/* Menú Desktop */}
-          <ul className="hidden md:flex gap-8 text-gray-700">
-            {menuItems.map(({ label, id }) => (
-              <li key={id}>
-                <a
-                  href={`#${id}`}
-                  className="hover:text-blue-600 transition"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(id);
-                  }}
-                >
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
         </nav>
 
-        {/* Línea doble de borde inferior */}
         {scrolled && (
           <div className="flex h-1 overflow-hidden">
             <motion.div
@@ -152,7 +161,6 @@ export default function Header() {
               animate={{ scaleX: 1 }}
               exit={{ scaleX: 0 }}
               transition={{ duration: 0.4 }}
-              style={{ transformOrigin: 'center' }}
             />
             <motion.div
               className="bg-orange-600 h-full w-1/2 origin-center"
@@ -160,7 +168,6 @@ export default function Header() {
               animate={{ scaleX: 1 }}
               exit={{ scaleX: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
-              style={{ transformOrigin: 'center' }}
             />
           </div>
         )}
@@ -178,18 +185,24 @@ export default function Header() {
             exit={{ opacity: 0, height: 0 }}
             role="menu"
           >
-            {menuItems.map(({ label, id }) => (
-              <li key={id} role="menuitem">
-                <a
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(id);
-                  }}
-                  href={`#${id}`}
-                  className="block text-gray-700 hover:text-blue-600 transition"
-                >
-                  {label}
-                </a>
+            {menuItems.map(({ label, id, href }, index) => (
+              <li key={label} role="menuitem">
+                {href ? (
+                  <a
+                    href={href}
+                    className={`text-gray-700 ${getHoverColor(index)}`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {label}
+                  </a>
+                ) : (
+                  <button
+                    onClick={() => handleMenuClick(id!)}
+                    className={`text-gray-700 text-left w-full ${getHoverColor(index)}`}
+                  >
+                    {label}
+                  </button>
+                )}
               </li>
             ))}
           </motion.ul>

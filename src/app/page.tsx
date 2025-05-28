@@ -3,6 +3,7 @@ import Services from "@/components/Services";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import PartnersSection from "@/components/PartnersSection";
+import WhatsappButton from "@/components/WhatsappButton";
 
 export default function HomePage() {
   return (
@@ -22,6 +23,7 @@ export default function HomePage() {
       <section id="contacto" className="flex flex-col justify-center">
         <Contact />
       </section>
+        <WhatsappButton />  
     </main>
   );
 }
