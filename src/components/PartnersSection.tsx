@@ -50,7 +50,7 @@
             >
             <div className="w-[300px] h-[120px] shadow-lg rounded-xl overflow-hidden flex items-center justify-center bg-white">
                 <Image
-                src="/Indesur.jpg"
+                src="/indesur.jpg"
                 alt="Indesur"
                 width={300}
                 height={120}

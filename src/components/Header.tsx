@@ -12,6 +12,8 @@ export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
 
+  const showBorderAlways = pathname === '/products' || pathname === '/projects';
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
@@ -101,7 +103,7 @@ export default function Header() {
 
       <header
         className={`sticky top-0 z-50 transition-colors duration-300 ${
-          scrolled ? 'bg-white/30 backdrop-blur-sm' : 'bg-transparent'
+          scrolled || showBorderAlways ? 'bg-white/30 backdrop-blur-sm' : 'bg-transparent'
         }`}
       >
         <nav className="mx-auto flex items-center justify-between py-6 px-6">
@@ -119,41 +121,40 @@ export default function Header() {
           >
             {menuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
-<ul className="hidden md:flex gap-8 text-gray-700">
-  {menuItems.map(({ label, id, href }, index) => (
-    <li key={label} className="relative group pb-2">
-      {href ? (
-        <a
-          href={href}
-          className="transition-colors cursor-pointer hover:text-black"
-        >
-          {label}
-          <span
-            className={`absolute left-0 -bottom-1 h-[3px] w-0 transition-all duration-400 ${
-              index % 2 === 0 ? 'bg-orange-600 group-hover:w-full' : 'bg-green-700 group-hover:w-full'
-            }`}
-          />
-        </a>
-      ) : (
-        <button
-          onClick={() => handleMenuClick(id!)}
-          className="transition-colors cursor-pointer hover:text-black"
-        >
-          {label}
-          <span
-            className={`absolute left-0 -bottom-1 h-[3px] w-0 transition-all duration-400 ${
-              index % 2 === 0 ? 'bg-orange-600 group-hover:w-full' : 'bg-green-700 group-hover:w-full'
-            }`}
-          />
-        </button>
-      )}
-    </li>
-  ))}
-</ul>
-
+          <ul className="hidden md:flex gap-8 text-gray-700">
+            {menuItems.map(({ label, id, href }, index) => (
+              <li key={label} className="relative group pb-2">
+                {href ? (
+                  <a
+                    href={href}
+                    className="transition-colors cursor-pointer hover:text-black"
+                  >
+                    {label}
+                    <span
+                      className={`absolute left-0 -bottom-1 h-[3px] w-0 transition-all duration-400 ${
+                        index % 2 === 0 ? 'bg-orange-600 group-hover:w-full' : 'bg-green-700 group-hover:w-full'
+                      }`}
+                    />
+                  </a>
+                ) : (
+                  <button
+                    onClick={() => handleMenuClick(id!)}
+                    className="transition-colors cursor-pointer hover:text-black"
+                  >
+                    {label}
+                    <span
+                      className={`absolute left-0 -bottom-1 h-[3px] w-0 transition-all duration-400 ${
+                        index % 2 === 0 ? 'bg-orange-600 group-hover:w-full' : 'bg-green-700 group-hover:w-full'
+                      }`}
+                    />
+                  </button>
+                )}
+              </li>
+            ))}
+          </ul>
         </nav>
 
-        {scrolled && (
+        {(scrolled || showBorderAlways) && (
           <div className="flex h-1 overflow-hidden">
             <motion.div
               className="bg-green-700 h-full w-1/2 origin-center"
@@ -198,7 +199,7 @@ export default function Header() {
                 ) : (
                   <button
                     onClick={() => handleMenuClick(id!)}
-                    className={`text-gray-700 text-left w-full ${getHoverColor(index)}`}
+                    className={`text-gray-700 text-left cursor-pointer ${getHoverColor(index)}`}
                   >
                     {label}
                   </button>
