@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FaInstagram, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 
 export default function Footer() {
   return (
@@ -32,29 +31,6 @@ export default function Footer() {
           <p>Email: qhingenieria@qhingenieria.com</p>
           <p>Ubicación: Arijon 3274, Rosario, Santa Fe</p>
 
-          <div className="flex gap-4 mt-4">
-            <motion.a
-              href="#"
-              whileHover={{ y: -3, scale: 1.05 }}
-              className="text-white hover:text-green-300 transition"
-            >
-              <FaInstagram size={18} />
-            </motion.a>
-            <motion.a
-              href="#"
-              whileHover={{ y: -3, scale: 1.05 }}
-              className="text-white hover:text-green-300 transition"
-            >
-              <FaFacebookF size={18} />
-            </motion.a>
-            <motion.a
-              href="#"
-              whileHover={{ y: -3, scale: 1.05 }}
-              className="text-white hover:text-green-300 transition"
-            >
-              <FaLinkedinIn size={18} />
-            </motion.a>
-          </div>
         </div>
       </div>
     </motion.footer>

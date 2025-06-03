@@ -4,6 +4,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -79,7 +80,6 @@ export default function Header() {
     { label: 'Sobre Nosotros', id: 'sobre-nosotros' },
     { label: 'Servicios', id: 'servicios' },
     { label: 'Productos', href: '/products' },
-    { label: 'Proyectos', href: '/projects' },
     { label: 'Contacto', id: 'contacto' },
   ];
 
@@ -106,12 +106,17 @@ export default function Header() {
           scrolled || showBorderAlways ? 'bg-white/30 backdrop-blur-sm' : 'bg-transparent'
         }`}
       >
-        <nav className="mx-auto flex items-center justify-between py-6 px-6">
+        <nav className="mx-auto flex items-center justify-between py-6 px-12 md:px-16 lg:px-20">
           <div
             onClick={() => router.push('/')}
-            className="text-2xl font-bold text-gray-900 cursor-pointer"
+            className="cursor-pointer"
           >
-            QH Ingeniería <br className="block md:hidden" /> y Servicios
+            <Image
+              src="/logo-qh-2.png"
+              alt="Logo"
+              width={200}
+              height={100}
+              className="h-10 w-auto"></Image>
           </div>
 
           <button
