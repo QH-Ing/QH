@@ -64,7 +64,7 @@ export default function PartnersSection() {
       <div className="flex flex-wrap justify-center gap-10">
         {/* ABS */}
         <motion.a
-          href="https://abspumps.ee/"
+          href="https://www.sulzer.com"
           target="_blank"
           rel="noopener noreferrer"
           initial={{ opacity: 0, y: 30 }}
@@ -84,7 +84,10 @@ export default function PartnersSection() {
         </motion.a>
 
         {/* Pumpex */}
-        <motion.div
+        <motion.a
+          href="https://www.sulzer.com"
+          target="_blank"
+          rel="noopener noreferrer"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -98,7 +101,7 @@ export default function PartnersSection() {
             height={50}
             className="object-contain"
           />
-        </motion.div>
+        </motion.a>
       </div>
     </section>
   );

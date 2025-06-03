@@ -45,6 +45,18 @@ export default function Hero() {
           </motion.p>
 
           <motion.button
+            onClick={() => {
+                const section = document.getElementById('contacto');
+                if (section) {
+                const yOffset = -90;
+                const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+                return;
+                }
+              if (section) {
+                (section as HTMLElement).scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}

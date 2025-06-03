@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import MapaInteractivo from './MapaInteractivo'; // ajustá el path si está en otra carpeta
+import MapaInteractivo from './MapaInteractivo';
 
 interface FormData {
   nombre: string;
@@ -116,7 +116,7 @@ export default function Contact() {
 
             <button
               type="submit"
-              className="w-full md:w-auto bg-orange-600 text-white px-6 py-3 hover:bg-green-700 transition duration-300 font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="w-full cursor-pointer md:w-auto bg-orange-600 text-white px-6 py-3 hover:bg-green-700 transition duration-300 font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-orange-500"
             >
               Enviar consulta
             </button>
