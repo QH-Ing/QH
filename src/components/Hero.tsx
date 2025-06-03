@@ -1,23 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 export default function Hero() {
-  const [mostrarVideo, setMostrarVideo] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setMostrarVideo(true);
-    }, 4000);
-
-    return () => clearTimeout(timeout);
-  }, []);
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Fondo: imagen o video */}
-      {mostrarVideo ? (
         <video
           autoPlay
           loop
@@ -25,12 +14,7 @@ export default function Hero() {
           className="absolute inset-0 w-full h-full object-cover z-0"
           src="/video-fondo-agua.mp4"
         />
-      ) : (
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-          style={{ backgroundImage: "url('/textura-agua1.jpg')" }}
-        />
-      )}
+
 
       {/* Overlay opcional */}
       <div className="absolute inset-0 bg-black/30 z-10" />

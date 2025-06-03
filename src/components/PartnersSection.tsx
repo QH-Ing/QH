@@ -52,7 +52,7 @@ export default function PartnersSection() {
             <Image
               src="/indesur.jpg"
               alt="Indesur"
-              width={300}
+              width={280}
               height={120}
               className="object-contain"
             />
@@ -75,10 +75,10 @@ export default function PartnersSection() {
         >
           <Image
           
-            src="/abs-pumps-logo.png"
+            src="/abs-logo.png"
             alt="ABS"
-            width={150}
-            height={80}
+            width={110}
+            height={50}
             className="object-contain"
           />
         </motion.a>
@@ -95,7 +95,7 @@ export default function PartnersSection() {
             src="/pumpex-logo.png"
             alt="Pumpex-Pumps"
             width={150}
-            height={80}
+            height={50}
             className="object-contain"
           />
         </motion.div>

@@ -5,6 +5,8 @@ export default function SeoHead() {
     <Head>
       {/* Título principal */}
       <title>QH Ingeniería y Servicios | Bombas hidráulicas en Rosario</title>
+      
+      <meta name="apple-mobile-web-app-title" content="Q.H." />
 
       {/* Meta descripción para buscadores */}
       <meta
