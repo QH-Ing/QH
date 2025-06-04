@@ -22,15 +22,16 @@ export default function Hero() {
       {/* Contenido principal */}
       <div className="relative z-20 flex flex-col justify-between h-full px-6 md:px-16 py-6">
         {/* Título */}
-        <motion.h1
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mt-15 text-6xl md:text-7xl font-bold text-white leading-tight max-w-5xl"
-        >
-          QH Ingeniería y <br className="block md:hidden" />
-          Servicios <br className="block md:hidden" /> S.A.
-        </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="mt-20 text-5xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-7xl font-extrabold tracking-tight text-white leading-[1.2] max-w-5xl drop-shadow-lg"
+          >
+            <span className="block">Q.H. Ingeniería</span>
+            <span className="block">y Servicios S.A.</span>
+          </motion.h1>
+
 
         {/* Parte inferior */}
         <div className="flex flex-col md:flex-row md:items-end md:gap-40">
@@ -48,7 +49,7 @@ export default function Hero() {
             onClick={() => {
                 const section = document.getElementById('contacto');
                 if (section) {
-                const yOffset = -90;
+                const yOffset = -100; // Ajusta este valor según el espacio que quieras dejar arriba
                 const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
                 window.scrollTo({ top: y, behavior: 'smooth' });
                 return;

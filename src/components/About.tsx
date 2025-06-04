@@ -18,21 +18,14 @@ const slides: Slide[] = [
 ];
 
 export default function About() {
-  const [[current, direction], setCurrent] = useState<[number, number]>([0, 0]);
+  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrent(([prev]) => [(prev + 1) % slides.length, 1]);
-    }, 4000);
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
-
-  const paginate = (newDirection: number) => {
-    setCurrent(([prev]) => {
-      const newIndex = (prev + newDirection + slides.length) % slides.length;
-      return [newIndex, newDirection];
-    });
-  };
 
   const currentSlide = slides[current];
 
@@ -40,9 +33,10 @@ export default function About() {
     <section className="flex flex-col md:flex-row md:items-center justify-between px-6 md:px-20 py-16 gap-10 bg-gray-200 min-h-[60vh]">
       {/* Columna izquierda */}
       <div className="w-full md:w-1/2 max-w-lg text-left self-center">
-        <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-4">
+        <h2 className="text-4xl md:text-5xl font-medium tracking-tight text-gray-800 mb-8 text-center md:text-left">
           Nuestra Historia
         </h2>
+
         <p className="text-base md:text-lg text-gray-700 leading-relaxed">
           En <strong className="text-gray-900">QH Ingeniería y Servicios</strong> contamos con una sólida trayectoria en el sector hidráulico,
           brindando <strong className="text-gray-900">soluciones integrales</strong> en instalación, mantenimiento y reparación de sistemas de bombeo.
@@ -54,23 +48,15 @@ export default function About() {
       {/* Columna derecha - Carrusel */}
       <div className="w-full md:w-1/2 relative flex flex-col items-center justify-center max-w-xl">
         <div className="w-full aspect-[16/9] overflow-hidden rounded-lg shadow-md border border-gray-100 relative">
-          <AnimatePresence mode="wait" custom={direction}>
+          <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide.src}
-              custom={direction}
-              initial={{ x: direction > 0 ? 300 : -300, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: direction > 0 ? -300 : 300, opacity: 0 }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              onDragEnd={(e, { offset }) => {
-                if (offset.x > 100) paginate(-1);
-                else if (offset.x < -100) paginate(1);
-              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: .4, ease: 'easeInOut' }}
               className="absolute inset-0"
             >
-              {currentSlide.type === 'image' ? (
                 <Image
                   src={currentSlide.src}
                   alt={`Imagen ${current + 1}`}
@@ -78,30 +64,21 @@ export default function About() {
                   className="object-cover rounded-lg"
                   priority
                 />
-              ) : (
-                <video
-                  src={currentSlide.src}
-                  className="w-full h-full object-cover rounded-lg"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                />
-              )}
+
             </motion.div>
           </AnimatePresence>
 
-          {/* Indicadores dentro de la imagen */}
+          {/* Indicadores */}
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex justify-center gap-2 z-10">
             {slides.map((_, index) => (
               <motion.button
                 key={index}
-                onClick={() => setCurrent([index, index > current ? 1 : -1])}
-                className={`w-2 h-2 rounded-full ${
+                onClick={() => setCurrent(index)}
+                className={`w-2.5 h-2.5 rounded-full ${
                   index === current ? 'bg-orange-600' : 'bg-orange-300'
                 }`}
-                animate={{ scale: index === current ? 1.2: 1 }}
-                transition={{ duration: 0.4 }}
+                animate={{ scale: index === current ? 1.3 : 1 }}
+                transition={{ duration: 0.3 }}
               />
             ))}
           </div>

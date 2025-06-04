@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Info, PhoneCall, Package, Layers } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
@@ -77,14 +77,11 @@ export default function Header() {
   };
 
   const menuItems = [
-    { label: 'Sobre Nosotros', id: 'sobre-nosotros' },
-    { label: 'Servicios', id: 'servicios' },
-    { label: 'Productos', href: '/products' },
-    { label: 'Contacto', id: 'contacto' },
+    { label: 'Sobre Nosotros', id: 'sobre-nosotros', icon: <Info size={18} /> },
+    { label: 'Servicios', id: 'servicios', icon: <Layers size={18} /> },
+    { label: 'Productos', href: '/products', icon: <Package size={18} /> },
+    { label: 'Contacto', id: 'contacto', icon: <PhoneCall size={18} /> },
   ];
-
-  const getHoverColor = (index: number) =>
-    index % 2 === 0 ? 'hover:border-b-2 hover:border-orange-500' : 'hover:border-b-2 hover:border-green-600';
 
   return (
     <>
@@ -106,18 +103,26 @@ export default function Header() {
           scrolled || showBorderAlways ? 'bg-white/30 backdrop-blur-sm' : 'bg-transparent'
         }`}
       >
-        <nav className="mx-auto flex items-center justify-between py-6 px-12 md:px-16 lg:px-20">
+        <nav className="mx-auto flex items-center justify-between py-6 px-6 md:px-16">
           <div
             onClick={() => router.push('/')}
             className="cursor-pointer"
           >
-            <Image
-              src="/logo-qh-2.png"
-              alt="Logo"
-              width={200}
-              height={100}
-              className="h-10 w-auto"></Image>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: -10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+            >
+              <Image
+                src="/logo-qh-2.png"
+                alt="Logo"
+                width={200}
+                height={100}
+                className="h-8 md:h-10 w-auto"
+              />
+            </motion.div>
           </div>
+
 
           <button
             id="menu-toggle"
@@ -126,17 +131,19 @@ export default function Header() {
           >
             {menuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
-          <ul className="hidden md:flex gap-8 text-gray-700">
+
+          {/* Desktop nav */}
+          <ul className="hidden md:flex gap-10 text-gray-800 text-m tracking-wide">
             {menuItems.map(({ label, id, href }, index) => (
-              <li key={label} className="relative group pb-2">
+              <li key={label} className="relative group pb-1">
                 {href ? (
                   <a
                     href={href}
-                    className="transition-colors cursor-pointer hover:text-black"
+                    className="cursor-pointer transition-colors duration-300 hover:text-black"
                   >
                     {label}
                     <span
-                      className={`absolute left-0 -bottom-1 h-[3px] w-0 transition-all duration-400 ${
+                      className={`absolute left-0 -bottom-0.5 h-[2px] w-0 transition-all duration-300 ${
                         index % 2 === 0 ? 'bg-orange-600 group-hover:w-full' : 'bg-green-700 group-hover:w-full'
                       }`}
                     />
@@ -144,11 +151,11 @@ export default function Header() {
                 ) : (
                   <button
                     onClick={() => handleMenuClick(id!)}
-                    className="transition-colors cursor-pointer hover:text-black"
+                    className="cursor-pointer transition-colors duration-300 hover:text-black"
                   >
                     {label}
                     <span
-                      className={`absolute left-0 -bottom-1 h-[3px] w-0 transition-all duration-400 ${
+                      className={`absolute left-0 -bottom-0.5 h-[2px] w-0 transition-all duration-300 ${
                         index % 2 === 0 ? 'bg-orange-600 group-hover:w-full' : 'bg-green-700 group-hover:w-full'
                       }`}
                     />
@@ -185,28 +192,28 @@ export default function Header() {
           <motion.ul
             id="mobile-menu"
             ref={menuRef}
-            className="fixed top-[80px] left-0 right-0 bg-white z-50 flex flex-col gap-6 px-6 py-6 shadow-md md:hidden"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
+            className="fixed top-[80px] left-4 right-4 bg-white/80 backdrop-blur-lg z-50 flex flex-col gap-6 px-6 py-8 rounded-2xl shadow-xl md:hidden border border-gray-200"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
             role="menu"
           >
-            {menuItems.map(({ label, id, href }, index) => (
+            {menuItems.map(({ label, id, href, icon }, ) => (
               <li key={label} role="menuitem">
                 {href ? (
                   <a
                     href={href}
-                    className={`text-gray-700 ${getHoverColor(index)}`}
                     onClick={() => setMenuOpen(false)}
+                    className="cursor-pointer flex items-center gap-2 text-gray-800 text-lg font-medium px-1 py-1 rounded-md transition-all duration-300 hover:bg-green-100"
                   >
-                    {label}
+                    {icon} {label}
                   </a>
                 ) : (
                   <button
                     onClick={() => handleMenuClick(id!)}
-                    className={`text-gray-700 text-left cursor-pointer ${getHoverColor(index)}`}
+                    className="cursor-pointer flex items-center gap-2 text-gray-800 text-lg font-medium w-full text-left px-1 py-1 rounded-md transition-all duration-300 hover:bg-green-100"
                   >
-                    {label}
+                    {icon} {label}
                   </button>
                 )}
               </li>

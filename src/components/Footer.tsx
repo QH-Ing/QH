@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 
 export default function Footer() {
   return (
@@ -26,11 +27,41 @@ export default function Footer() {
         </div>
 
         {/* Contacto y Redes */}
-        <div className="flex flex-col gap-2 md:items-end text-white/80 font-light">
-          <p>Teléfono: (341) 461-5505</p>
-          <p>Email: qhingenieria@qhingenieria.com</p>
-          <p>Ubicación: Arijon 3274, Rosario, Santa Fe</p>
+        <div className="flex flex-col gap-3 md:items-end text-white/80 font-light">
+          {/* Teléfono */}
+          <p className="flex items-center gap-2">
+            <FiPhone className="text-white" />
+            <a href="tel:+543414615505" className="hover:underline">
+              +54 341 4615505
+            </a>
+          </p>
 
+          {/* Email */}
+          <p className="flex items-center gap-2">
+            <FiMail className="text-white" />
+            <a
+              href="mailto:qhingenieria@qhingenieria.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline break-words"
+              
+            >
+              qhingenieria@qhingenieria.com
+            </a>
+          </p>
+
+          {/* Dirección */}
+          <p className="flex items-center gap-2">
+            <FiMapPin className="text-white" />
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Arijon+3274,+Rosario,+Santa+Fe"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              Arijon 3274, Rosario, Santa Fe, Argentina.
+            </a>
+          </p>
         </div>
       </div>
     </motion.footer>
