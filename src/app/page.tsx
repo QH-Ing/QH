@@ -17,10 +17,10 @@ export default function HomePage() {
       <section id="sobre-nosotros" className="flex flex-col justify-center">
         <About />
       </section>
-      <section id="servicios" className="flex flex-col justify-center">
+      <section id="servicios" className="flex flex-col justify-center"> 
         <Services />
       </section>
-      <section id="contacto" className="flex flex-col justify-center">
+      <section id="contacto" className="flex flex-col justify-center scroll-mt-12">
         <Contact />
       </section>
         <WhatsappButton />  

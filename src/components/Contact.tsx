@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import MapaInteractivo from './MapaInteractivo';
+import MapaVideo from './MapaVideo';
 
 interface FormData {
   nombre: string;
@@ -56,7 +56,7 @@ export default function Contact() {
         
         {/* Mapa (arriba en mobile, derecha en desktop) */}
         <div className="w-full lg:w-1/2">
-          <MapaInteractivo />
+          <MapaVideo />
         </div>
 
         {/* Formulario */}

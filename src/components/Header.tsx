@@ -13,7 +13,7 @@ export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
 
-  const showBorderAlways = pathname === '/products' || pathname === '/projects';
+  const showBorderAlways = pathname === '/products';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);

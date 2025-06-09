@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <Head />
-      <body className={`${inter.className} flex flex-col min-h-screen bg-white text-gray-900`}> 
+      <body className={`${inter.className} flex flex-col min-h-screen bg-white text-gray-90`}> 
         <Toaster position="top-right" />
         <Header />
         

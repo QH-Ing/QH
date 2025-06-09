@@ -22,3 +22,6 @@ body {
   color: #111827; /* gris oscuro para texto */
 }
 
+html {
+  scroll-behavior: smooth;
+} 

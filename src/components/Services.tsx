@@ -3,13 +3,12 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  HiOutlineChip,
-  HiOutlineRefresh,
   HiOutlineLightningBolt
 } from 'react-icons/hi';
-import { FaWater } from 'react-icons/fa';
+import { FaTruck, FaWater } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
 import FondoParticulas from './Particulas';
+import { MdBuild } from 'react-icons/md';
 
 const services = [
   {
@@ -20,18 +19,19 @@ const services = [
     icon: <FaWater size={30} className="text-orange-600 group-hover:animate-pulse transition-all duration-300" />,
   },
   {
-    title: 'MANTENIMIENTO PREVENTIVO',
-    description: 'Control periódico para asegurar el funcionamiento de instalaciones.',
+    title: 'ALQUILER DE BOMBAS',
+    description: 'Soluciones inmediatas para obras, inundaciones y minería.',
     details:
-      'Realizamos mantenimiento programado, detectando fallas tempranas y optimizando el rendimiento de equipos. Garantizamos continuidad operativa y mínima detención con diagnósticos precisos.',
-    icon: <HiOutlineRefresh size={30} className="text-orange-600 group-hover:animate-pulse transition-all duration-300" />,
+      'Ofrecemos bombas en alquiler listas para operar en situaciones críticas. Equipos de alta potencia, ideales para trabajos de desagote, movimientos de grandes caudales y operaciones mineras. Entrega rápida, soporte técnico y disponibilidad nacional.',
+    icon: <FaTruck size={30} className="text-orange-600 group-hover:animate-pulse transition-all duration-300" />,
   },
+
   {
     title: 'REPARACIÓN DE EQUIPOS',
     description: 'Diagnóstico técnico y reparación con repuestos certificados.',
     details:
       'Reparamos bombas, motores eléctricos y tableros con repuestos certificados y stock permanente. Atendemos urgencias en menos de 24 hs con grupos técnicos móviles disponibles.',
-    icon: <HiOutlineChip size={30} className="text-orange-600 group-hover:animate-pulse transition-all duration-300" />,
+    icon: <MdBuild size={30} className="text-orange-600 group-hover:animate-pulse transition-all duration-300" />,
   },
   {
     title: 'AUTOMATIZACIÓN',
