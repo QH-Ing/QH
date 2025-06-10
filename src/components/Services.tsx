@@ -12,10 +12,10 @@ import { MdBuild } from 'react-icons/md';
 
 const services = [
   {
-    title: 'INSTALACIÓN DE BOMBAS',
-    description: 'Montaje profesional de sistemas de bombeo adaptados a cada proyecto.',
+    title: 'VENTA DE BOMBAS',
+    description: 'Para servicios de agua potable, aguas residuales, efluentes industriales.',
     details:
-      'Instalamos bombas industriales, motobombas de gran caudal, electrobombas sumergibles y sistemas electromecánicos llave en mano. Brindamos soporte integral desde la planificación hasta la puesta en marcha.',
+      'Ofrecemos una amplia gama de bombas centrífugas, sumergibles y de superficie de marcas líderes del mercado. Asesoramos en la elección adecuada según el tipo de fluido, caudal requerido y condiciones de instalación. Todas nuestras bombas cumplen con los más altos estándares de calidad, eficiencia energética y durabilidad. Ideal para sistemas de agua potable, tratamiento de aguas residuales, efluentes industriales y aplicaciones específicas en obras civiles e industrias.',
     icon: <FaWater size={30} className="text-orange-600 group-hover:animate-pulse transition-all duration-300" />,
   },
   {
@@ -34,10 +34,11 @@ const services = [
     icon: <MdBuild size={30} className="text-orange-600 group-hover:animate-pulse transition-all duration-300" />,
   },
   {
-    title: 'AUTOMATIZACIÓN',
+    title: 'TABLEROS ELECTRICOS ',
     description: 'Integración de sistemas inteligentes para una operación eficiente.',
     details:
-      'Diseñamos tableros de comando y control con automatización inteligente, sensores y variadores. Aumentamos eficiencia energética y mejoramos el control de procesos.',
+      'Diseñamos tableros de comando y control con automatización inteligente, sensores y variadores de velocidad. Desarrollamos módulos mediante PLC con variadores y arrancadores suaves, ideales para el control eficiente de sistemas en barrios privados y ciudades de hasta 70.000 habitantes. Aumentamos la eficiencia energética y mejoramos el control de procesos en instalaciones de mediana y gran escala.',
+
     icon: <HiOutlineLightningBolt size={30} className="text-orange-600 group-hover:animate-pulse transition-all duration-300" />,
   },
 ];
