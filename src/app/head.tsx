@@ -11,7 +11,8 @@ export default function SeoHead() {
       {/* Meta descripción para buscadores */}
       <meta
         name="description"
-        content="Mantenimiento e instalación de bombas hidráulicas en Rosario. Soluciones confiables con experiencia profesional."
+        content="Provisión de servicios hidráulicos y soluciones integrales para la gestión del agua.
+            Servicio confiable y profesional en Rosario y alrededores."
       />
 
       {/* Palabras clave (aunque cada vez menos usadas) */}

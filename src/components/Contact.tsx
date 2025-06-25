@@ -61,7 +61,7 @@ export default function Contact() {
 
         {/* Formulario */}
         <div className="w-full lg:w-1/2">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Contactanos</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Contactanos</h2>
           <p className="text-lg text-gray-600 mb-12">
             Estamos para ayudarte. Completá el formulario y te responderemos a la brevedad.
           </p>

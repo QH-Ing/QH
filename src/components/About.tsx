@@ -14,7 +14,7 @@ const slides: Slide[] = [
   { type: 'image', src: '/obra6.jpeg' },
   { type: 'image', src: '/obra3.jpeg' },
   { type: 'image', src: '/obra4.jpeg' },
-  { type: 'image', src: '/obra5.jpeg' },
+  { type: 'image', src: '/desagote.jpeg' },
 ];
 
 export default function About() {

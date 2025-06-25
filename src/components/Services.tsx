@@ -2,44 +2,43 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  HiOutlineLightningBolt
-} from 'react-icons/hi';
-import { FaTruck, FaWater } from 'react-icons/fa';
+import { FaWater } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
 import FondoParticulas from './Particulas';
 import { MdBuild } from 'react-icons/md';
+import { HiOutlineShieldCheck } from 'react-icons/hi2';
+import { FaTruckMoving } from 'react-icons/fa6';
 
 const services = [
   {
-    title: 'VENTA DE BOMBAS',
-    description: 'Para servicios de agua potable, aguas residuales, efluentes industriales.',
+    title: 'Proyectos',
+    description: 'Asesoramiento técnico en soluciones hidráulicas para obras públicas, privadas e industriales.',
     details:
-      'Ofrecemos una amplia gama de bombas centrífugas, sumergibles y de superficie de marcas líderes del mercado. Asesoramos en la elección adecuada según el tipo de fluido, caudal requerido y condiciones de instalación. Todas nuestras bombas cumplen con los más altos estándares de calidad, eficiencia energética y durabilidad. Ideal para sistemas de agua potable, tratamiento de aguas residuales, efluentes industriales y aplicaciones específicas en obras civiles e industrias.',
+      'Asesoramos técnicamente para todo tipo de proyectos hidráulicos, ya sea para industrias como también para servicios públicos y privados, allí donde se necesite bombas para salvar desniveles.',
     icon: <FaWater size={30} className="text-orange-600 group-hover:animate-pulse transition-all duration-300" />,
   },
   {
-    title: 'ALQUILER DE BOMBAS',
-    description: 'Soluciones inmediatas para obras, inundaciones y minería.',
+    title: 'Alquiler',
+    description: 'Flota disponible de electrobombas para construcción, minería y drenaje.',
     details:
-      'Ofrecemos bombas en alquiler listas para operar en situaciones críticas. Equipos de alta potencia, ideales para trabajos de desagote, movimientos de grandes caudales y operaciones mineras. Entrega rápida, soporte técnico y disponibilidad nacional.',
-    icon: <FaTruck size={30} className="text-orange-600 group-hover:animate-pulse transition-all duration-300" />,
+      'Poseemos una flota importante de electrobombas para alquiler, tanto para la construcción, como minería y para drenaje de zonas anegadas.',
+    icon: <FaTruckMoving size={30} className="text-orange-600 group-hover:animate-pulse transition-all duration-300" />,
   },
 
   {
-    title: 'REPARACIÓN DE EQUIPOS',
-    description: 'Diagnóstico técnico y reparación con repuestos certificados.',
+    title: 'Servicio técnico oficial',
+    description: 'Especialistas en reparación y mantenimiento de electrobombas y motores eléctricos.',
     details:
-      'Reparamos bombas, motores eléctricos y tableros con repuestos certificados y stock permanente. Atendemos urgencias en menos de 24 hs con grupos técnicos móviles disponibles.',
+      'Somos servicio técnico oficial de las marcas representadas y nos especializamos en la reparación de electrobombas sumergibles cloacales, para achique y para efluentes industriales de cualquier marca, bombas y motores eléctricos.',
     icon: <MdBuild size={30} className="text-orange-600 group-hover:animate-pulse transition-all duration-300" />,
   },
   {
-    title: 'TABLEROS ELECTRICOS ',
-    description: 'Integración de sistemas inteligentes para una operación eficiente.',
+    title: 'Calidad y trabajo seguro',
+    description: 'Procesos auditados y compromiso con la seguridad y la calidad en cada proyecto.',
     details:
-      'Diseñamos tableros de comando y control con automatización inteligente, sensores y variadores de velocidad. Desarrollamos módulos mediante PLC con variadores y arrancadores suaves, ideales para el control eficiente de sistemas en barrios privados y ciudades de hasta 70.000 habitantes. Aumentamos la eficiencia energética y mejoramos el control de procesos en instalaciones de mediana y gran escala.',
+      'Contamos con un proceso de integración de calidad interna auditado periódicamente por nuestros clientes más importantes. Trabajamos en forma integrada con profesionales de higiene y seguridad y salud ocupacional de modo de brindar un espacio de trabajo confortable y seguro.',
 
-    icon: <HiOutlineLightningBolt size={30} className="text-orange-600 group-hover:animate-pulse transition-all duration-300" />,
+    icon: <HiOutlineShieldCheck size={30} className="text-orange-600 group-hover:animate-pulse transition-all duration-300" />,
   },
 ];
 
@@ -57,7 +56,7 @@ export default function Services() {
             <span className="font-bold text-gray-900">con el agua.</span>
           </h2>
           <p className="mt-4 text-gray-700 text-base md:text-lg max-w-md">
-            Brindamos <strong className="text-gray-900">soluciones hidráulicas</strong> clave para un presente <strong className="text-gray-900">eficiente</strong> y un futuro <strong className="text-gray-900">sostenible</strong>.
+            Brindamos <strong className="text-gray-900">soluciones para el bombeo</strong> de todo tipo de fluidos, para un presente <strong className="text-gray-900">eficiente</strong> y un futuro <strong className="text-gray-900">sustentable</strong>.
           </p>
         </div>
 

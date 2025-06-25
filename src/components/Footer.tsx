@@ -17,7 +17,7 @@ export default function Footer() {
         <div className="space-y-4">
           <h4 className="text-lg font-semibold text-white">Q.H. Ingeniería y Servicios S.A.</h4>
           <p className="text-white/80 font-light leading-relaxed">
-            Mantenimiento e instalación de bombas hidráulicas.
+            Provisión de servicios hidráulicos y soluciones integrales para la gestión del agua.
             Servicio confiable y profesional en Rosario y alrededores.
           </p>
           <p className="text-white/60 text-xs">

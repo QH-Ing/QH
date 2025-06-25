@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Contact from "@/components/Contact";
 import PartnersSection from "@/components/PartnersSection";
 import WhatsappButton from "@/components/WhatsappButton";
+import Clients from "@/components/Clients";
 
 export default function HomePage() {
   return (
@@ -22,6 +23,9 @@ export default function HomePage() {
       </section>
       <section id="contacto" className="flex flex-col justify-center scroll-mt-12">
         <Contact />
+      </section>
+      <section id="contacto" className="flex flex-col justify-center scroll-mt-12">
+        <Clients />
       </section>
         <WhatsappButton />  
     </main>
