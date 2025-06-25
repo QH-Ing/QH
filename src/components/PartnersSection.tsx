@@ -7,7 +7,7 @@ export default function PartnersSection() {
     { src: '/sulzer.png', alt: 'Sulzer', link: 'https://www.sulzer.com' },
     { src: '/abs-logo.png', alt: 'ABS', link: 'https://www.sulzer.com' },
     { src: '/pumpex-logo.png', alt: 'Pumpex', link: 'https://www.sulzer.com' },
-    { src: '/innomotics-logo.png', alt: 'Inomotics', link: 'https://www.innomotics.com/' },
+    { src: '/innomotics.png', alt: 'Inomotics', link: 'https://www.innomotics.com/' },
     { src: '/siemens-logo.png', alt: 'Siemens', link: 'https://www.siemens.com/' },
     { src: '/indesur.jpg', alt: 'Indesur', link: 'https://www.indesur.com.ar' },
   ];
