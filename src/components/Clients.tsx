@@ -16,7 +16,7 @@ export default function NuestrosClientes() {
     { src: '/obring.png', alt: 'Obring' },
     { src: '/renova.png', alt: 'Renova', className: 'reducido'  },
     { src: '/pampaenergia.jpg', alt: 'Pampa Energía' },
-    { src: '/brayco.jpg', alt: 'Grupo Brayco' },
+    { src: '/brayco-logo.jpg', alt: 'Grupo Brayco' },
     { src: '/terminal6.jpg', alt: 'Terminal 6', className: 'ampliado' },
     { src: '/cotar.png', alt: 'Cotar' },
     { src: '/milkaut.png', alt: 'Milkaut' },
@@ -35,10 +35,10 @@ export default function NuestrosClientes() {
     { src: '/muni-sf.png', alt: 'Municipalidad de Santa Fe', className: 'ampliado' },
     { src: '/gerdau.png', alt: 'Gerdau' },
     { src: '/ypf.png', alt: 'YPF' },
-    { src: '/electrolux.png', alt: 'Electrolux' },
-    { src: '/ternium.png', alt: 'Ternium' },
+    { src: '/electrolux-logo.png', alt: 'Electrolux' },
+    { src: '/ternium-logo.png', alt: 'Ternium' },
     { src: '/unilever.png', alt: 'Unilever', className: 'reducido' },
-    { src: '/nestle.jpg', alt: 'Nestlé' },
+    { src: '/nestle-logo.jpg', alt: 'Nestlé' },
   ];
 
   const mitad = Math.ceil(logos.length / 2);
