@@ -1,11 +1,15 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-import Head from 'next/head';
 import { HiOutlineDocumentDownload } from 'react-icons/hi';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const productos = [
   {
@@ -88,59 +92,114 @@ const productos = [
   },
 ];
 
-export default function Productos() {
+export default function ProductosCarousel() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   return (
-    <section className="w-full bg-white text-gray-900 px-6 md:px-20 py-20">
-      <Head>
-        <title>Productos – Bombas, motores, tableros y más</title>
-        <meta name="description" content="Venta, reparación y alquiler de bombas sumergibles, motores eléctricos y tableros de control. Equipos listos para operar." />
-        <meta name="keywords" content="bombas sumergibles, tableros eléctricos, motobombas, mixers industriales, motores eléctricos, equipos industriales" />
-      </Head>
+    <section className="w-full bg-white text-gray-900 px-6 md:px-20 py-20 relative">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-light text-center mb-4">
+        <h2 className="text-4xl font-light text-center mb-8">
           Nuestros <span className="font-bold text-orange-600">Productos</span>
         </h2>
-        <Link
-          href="/#contacto"
-          className="block text-center text-lg font-semibold text-orange-600 hover:text-white hover:bg-orange-600 transition-colors duration-300 px-6 py-2 border border-orange-600 w-fit mx-auto mb-12"
-        >
-          Consulte por su venta y/o alquiler
-        </Link>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {productos.map((producto, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="border border-orange-600 overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 bg-white flex flex-col justify-between"
-            >
-              <div className="relative w-full h-60">
-                <Image
-                  src={producto.imagen}
-                  alt={producto.nombre}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-4 flex-1 flex flex-col justify-between">
-                <h3 className="text-lg font-semibold text-gray-700 mb-2">{producto.nombre}</h3>
-                <p className="text-sm text-gray-700 mb-4">{producto.descripcion}</p>
-                <a
-                  href={producto.manual}
-                  download
-                  className="mt-auto flex items-center gap-2 text-sm font-semibold text-orange-600 hover:text-white hover:bg-orange-600 border border-orange-600 transition-colors duration-300 px-4 py-2 w-fit rounded"
+        <div className="relative">
+          <Swiper
+            modules={[Navigation, Pagination]}
+            navigation={{
+              nextEl: '.custom-next',
+              prevEl: '.custom-prev',
+            }}
+            pagination={{ clickable: true }}
+            spaceBetween={20}
+            speed={500}
+            breakpoints={{
+              320: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            className="group"
+          >
+            {productos.map((producto, index) => (
+              <SwiperSlide key={index} className="h-full">
+                <motion.div
+                  onClick={() => setSelectedImage(producto.imagen)}
+                  className="cursor-pointer flex flex-col h-full min-h-[450px] border border-orange-600 shadow-sm hover:shadow-lg transition-all duration-300 bg-white overflow-hidden"
                 >
-                  <HiOutlineDocumentDownload size={18} />
-                  Descargar manual
-                </a>
-              </div>
-              <div className="h-1 from-orange-500 to-orange-500" />
-            </motion.div>
-          ))}
+                  <div className="relative w-full h-60">
+                    <Image
+                      src={producto.imagen}
+                      alt={producto.nombre}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-4 flex flex-col flex-1">
+                    <h3 className="text-lg font-semibold text-gray-700 mb-2">{producto.nombre}</h3>
+                    <p className="text-sm text-gray-700 mb-4">{producto.descripcion}</p>
+                    <div className="mt-auto">
+                      <a
+                        href={producto.manual}
+                        download
+                        className="flex items-center gap-2 text-sm font-semibold text-orange-600 hover:text-white hover:bg-orange-600 border border-orange-600 transition-colors duration-300 px-4 py-2 w-fit rounded"
+                      >
+                        <HiOutlineDocumentDownload size={18} />
+                        Descargar manual
+                      </a>
+                    </div>
+                  </div>
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          <div className="custom-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white p-2 rounded-full cursor-pointer shadow">
+            <FaChevronLeft />
+          </div>
+          <div className="custom-next absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white p-2 rounded-full cursor-pointer shadow">
+            <FaChevronRight />
+          </div>
         </div>
+
+        <style jsx global>{`
+          .swiper-pagination {
+            margin-top: 48px !important;
+          }
+          .swiper-pagination-bullets {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+          }
+          .swiper-pagination-bullet {
+            background: #fb923c;
+            opacity: 0.4;
+            transition: all 0.3s;
+            width: 8px;
+            height: 8px;
+          }
+          .swiper-pagination-bullet-active {
+            opacity: 1;
+            transform: scale(1.2);
+          }
+        `}</style>
+
+        {/* Modal Imagen */}
+        {selectedImage && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black/50"
+            onClick={() => setSelectedImage(null)}
+          >
+            <div className="relative w-full max-w-3xl p-4">
+              <Image
+                src={selectedImage}
+                alt="Producto ampliado"
+                fill
+                className="object-contain w-full h-auto rounded-xl"
+                sizes="(max-width: 768px) 100vw, 800px"
+                priority
+              />
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

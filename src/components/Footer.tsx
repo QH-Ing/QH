@@ -54,7 +54,7 @@ export default function Footer() {
           <p className="flex items-center gap-2">
             <FiMapPin className="text-white" />
             <a
-              href="https://www.google.com/maps/search/?api=1&query=Arijon+3274,+Rosario,+Santa+Fe"
+              href="https://maps.app.goo.gl/7GbSNaBEFX2A95MAA"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:underline"
